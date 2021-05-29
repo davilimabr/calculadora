@@ -1,0 +1,10 @@
+C:\Users\davil\source\repos\Calculadora\Calculadora\bin\Debug\Calculadora.exe.config
+C:\Users\davil\source\repos\Calculadora\Calculadora\bin\Debug\Calculadora.exe
+C:\Users\davil\source\repos\Calculadora\Calculadora\bin\Debug\Calculadora.pdb
+C:\Users\davil\source\repos\Calculadora\Calculadora\obj\Debug\Calculadora.csprojAssemblyReference.cache
+C:\Users\davil\source\repos\Calculadora\Calculadora\obj\Debug\Calculadora.FormCalculadora.resources
+C:\Users\davil\source\repos\Calculadora\Calculadora\obj\Debug\Calculadora.Properties.Resources.resources
+C:\Users\davil\source\repos\Calculadora\Calculadora\obj\Debug\Calculadora.csproj.GenerateResource.cache
+C:\Users\davil\source\repos\Calculadora\Calculadora\obj\Debug\Calculadora.csproj.CoreCompileInputs.cache
+C:\Users\davil\source\repos\Calculadora\Calculadora\obj\Debug\Calculadora.exe
+C:\Users\davil\source\repos\Calculadora\Calculadora\obj\Debug\Calculadora.pdb
