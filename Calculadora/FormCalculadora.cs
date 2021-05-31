@@ -12,7 +12,7 @@ namespace Calculadora
 {
     public partial class FormCalculadora : Form
     {
-        public string Operacao { get; set; }
+        public string Equacao { get; set; }
         public char UltimoCaracter { get; set; }
         public int UltimoIndice { get; set; }
 
@@ -22,114 +22,164 @@ namespace Calculadora
             AtualizarAtributos();
         }
 
-
-        private void botaoNumerico_Click(object sender, EventArgs e)
+        //Métodos de captura dos eventos pressionar os botões
+        private void botaoVirtual_Click(object sender, EventArgs e)
         {
             Button botao = (Button)sender;
-            lblResultado.Text += botao.Text;
+            string tecla = botao.Text;
+            switch(tecla)
+            {
+                case "1": case "2": case "3": case "4": case "5":
+                case "6": case "7": case "8": case "9": case "0":
+                    botaoNumerico(tecla);
+                    break;
+                case "+": case "-":
+                    botaoSubAdc(tecla);
+                    break;
+                case "*": case "/":
+                    botaoDivMult(tecla);
+                    break;
+                case "x²": case "x^y":
+                    botaoPotencia(tecla);
+                    break;
+                case "C":
+                    botaoApagar(true);
+                    break;
+                case "⌫":
+                    botaoApagar();
+                    break;
+                case "√":
+                    botaoRaiz();
+                    break;
+                case ",":
+                    botaoVirgula();
+                    break;
+                case "=":
+                    CalcularResultado();
+                    break;
+            }
         }
 
-        private void botaoDivMult_Click(object sender, EventArgs e)
+        private void botaoTeclado_Click(object sender, KeyPressEventArgs e)
         {
-            if (Operacao == "" || UltimoCaracter == '+' || UltimoCaracter == '-' || 
-                UltimoCaracter == ',' || UltimoCaracter == '^' || UltimoCaracter == '√')
+           string tecla = $"{e.KeyChar}";
+           switch (tecla)
+            {
+                case "1": case "2": case "3": case "4": case "5":
+                case "6": case "7": case "8": case "9": case "0":
+                    botaoNumerico(tecla);
+                    break;
+                case "+": case "-":
+                    botaoSubAdc(tecla);
+                    break;
+                case "*": case "/":
+                    botaoDivMult(tecla);
+                    break;
+                case "\b":
+                    botaoApagar();
+                    break;
+                case ",":
+                    botaoVirgula();
+                    break;
+                case "\n":
+                    CalcularResultado();
+                    break;
+            }
+        }
+
+        //funcionalidades dos botões
+        private void CalcularResultado()
+        {
+
+        }
+
+        private void botaoNumerico(string numero)
+        {
+            lblResultado.Text += numero;
+        }
+
+        private void botaoDivMult(string operador)
+        {
+            if (Equacao == "" || UltimoCaracter == '+' || UltimoCaracter == '-' ||
+               UltimoCaracter == ',' || UltimoCaracter == '^' || UltimoCaracter == '√')
                 return;
 
-            Button botao = (Button)sender;
-            string operador = botao.Text;
-
             if (UltimoCaracter == '/' || UltimoCaracter == '*')
-                Operacao = Operacao.Substring(0, UltimoIndice);
+                Equacao = Equacao.Substring(0, UltimoIndice);
 
-            if (operador == "/")
-                Operacao += '/';
-            else
-                Operacao += '*';
-
-            lblResultado.Text = Operacao;
+            Equacao += operador;
+            lblResultado.Text = Equacao;
         }
 
-        private void botaoSubAdc_Click(object sender, EventArgs e)
+        private void botaoSubAdc(string operador)
         {
             if (UltimoCaracter == ',' || UltimoCaracter == '√')
                 return;
 
-            Button botao = (Button)sender;
-            string operador = botao.Text;
-
             if (UltimoCaracter == '-' || UltimoCaracter == '+')
-                Operacao = Operacao.Substring(0, UltimoIndice);
+                Equacao = Equacao.Substring(0, UltimoIndice);
 
-            if (operador == "+")
-                Operacao += '+';
-            else
-                Operacao += '-';
-
-            lblResultado.Text = Operacao;
+            Equacao += operador;
+            lblResultado.Text = Equacao;
         }
 
-        private void botaoPotencia_Click(object sender, EventArgs e)
+        private void botaoPotencia(string operador)
         {
-            if (UltimoCaracter == ',' || Operacao == "" ||
+            if (UltimoCaracter == ',' || Equacao == "" ||
                UltimoCaracter == '+' || UltimoCaracter == '-' ||
                    UltimoCaracter == '*' || UltimoCaracter == '/' || UltimoCaracter == '√')
                 return;
 
-            Button botao = (Button)sender;
-            string operador = botao.Text;
-
             if(UltimoIndice != 0)
             {
-                string doisUltimosCaracteres = $"{Operacao[UltimoIndice - 1]}{Operacao[UltimoIndice]}";
+                string doisUltimosCaracteres = $"{Equacao[UltimoIndice - 1]}{Equacao[UltimoIndice]}";
                 if (UltimoCaracter == '^')
-                    Operacao = Operacao.Substring(0, UltimoIndice);
+                    Equacao = Equacao.Substring(0, UltimoIndice);
                 else if (doisUltimosCaracteres == "^2")
-                    Operacao = Operacao.Substring(0, UltimoIndice - 1);
+                    Equacao = Equacao.Substring(0, UltimoIndice - 1);
             }
            
             if (operador == "x²")
-                Operacao += "^2";
+                Equacao += "^2";
             else
-                Operacao += "^";
+                Equacao += "^";
 
-            lblResultado.Text = Operacao;
+            lblResultado.Text = Equacao;
         }
 
-        private void botaoRaiz_Click(object sender, EventArgs e)
+        private void botaoRaiz()
         {
             if (UltimoCaracter == ',')
                 return;
 
             if (UltimoCaracter == '√')
-                Operacao = Operacao.Substring(0, UltimoIndice);
+                Equacao = Equacao.Substring(0, UltimoIndice);
 
-            Operacao += "√";
-            lblResultado.Text = Operacao;
+            lblResultado.Text += "√";
         }
 
-        private void btnVirgula_Click(object sender, EventArgs e)
+        private void botaoVirgula()
         {
-            if (Operacao.Contains(",") || Operacao == "" || UltimoCaracter == '+' ||
+            if (Equacao.Contains(",") || Equacao == "" || UltimoCaracter == '+' ||
                 UltimoCaracter == '-' || UltimoCaracter == '*' || UltimoCaracter == '/')
                 return;
 
-            Operacao += ',';
-            lblResultado.Text = Operacao;
+            lblResultado.Text += ',';
         }
 
-        private void btnApagar_Click(object sender, EventArgs e)
+        private void botaoApagar(bool apagarTudo = false)
         {
-            if (Operacao == "")
+            if (Equacao == "")
                 return;
 
-            Button button = (Button)sender;
-            if (button.Equals(btnApagar))
-                Operacao = Operacao.Substring(0, UltimoIndice);
-            else if (button.Equals(btnApagarTudo))
-                Operacao = "";
+            if (apagarTudo)
+                Equacao = "";
+            else
+                Equacao = Equacao.Substring(0, UltimoIndice);
 
-            lblResultado.Text = Operacao;
+            lblResultado.Text = Equacao;
         }
+
 
         private void lblResultado_SizeChanged(object sender, EventArgs e)
         {
@@ -144,20 +194,20 @@ namespace Calculadora
         private void lblResultado_TextChanged(object sender, EventArgs e)
         {
             AtualizarAtributos();
+
+            if(Equacao == "")
+            {
+                string nome = lblResultado.Font.Name;
+                lblResultado.Font = new Font(nome, 25);
+            }
         }
 
         private void AtualizarAtributos()
         {
-            Operacao = lblResultado.Text;
+            Equacao = lblResultado.Text;
             UltimoIndice = lblResultado.Text.Length - 1;
-            if (Operacao != "")
+            if (Equacao != "")
                 UltimoCaracter = lblResultado.Text[lblResultado.Text.Length - 1];
         }
-
-        /*
-        private void FormCalculadora_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }*/
     }
 }
