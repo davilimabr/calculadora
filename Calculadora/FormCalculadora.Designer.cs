@@ -39,7 +39,6 @@
             this.btn4 = new System.Windows.Forms.Button();
             this.btnVirgula = new System.Windows.Forms.Button();
             this.btn0 = new System.Windows.Forms.Button();
-            this.btnInverteSinal = new System.Windows.Forms.Button();
             this.btnResultado = new System.Windows.Forms.Button();
             this.btnAdicao = new System.Windows.Forms.Button();
             this.btnSubtracao = new System.Windows.Forms.Button();
@@ -206,7 +205,7 @@
             this.btnVirgula.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVirgula.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnVirgula.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnVirgula.Location = new System.Drawing.Point(132, 426);
+            this.btnVirgula.Location = new System.Drawing.Point(71, 426);
             this.btnVirgula.Margin = new System.Windows.Forms.Padding(0);
             this.btnVirgula.Name = "btnVirgula";
             this.btnVirgula.Size = new System.Drawing.Size(60, 60);
@@ -222,7 +221,7 @@
             this.btn0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn0.ForeColor = System.Drawing.Color.DarkRed;
-            this.btn0.Location = new System.Drawing.Point(71, 426);
+            this.btn0.Location = new System.Drawing.Point(10, 426);
             this.btn0.Margin = new System.Windows.Forms.Padding(0);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(60, 60);
@@ -231,21 +230,6 @@
             this.btn0.UseVisualStyleBackColor = false;
             this.btn0.Click += new System.EventHandler(this.botaoNumerico_Click);
             // 
-            // btnInverteSinal
-            // 
-            this.btnInverteSinal.BackColor = System.Drawing.Color.MistyRose;
-            this.btnInverteSinal.FlatAppearance.BorderSize = 0;
-            this.btnInverteSinal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInverteSinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnInverteSinal.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnInverteSinal.Location = new System.Drawing.Point(10, 426);
-            this.btnInverteSinal.Margin = new System.Windows.Forms.Padding(0);
-            this.btnInverteSinal.Name = "btnInverteSinal";
-            this.btnInverteSinal.Size = new System.Drawing.Size(60, 60);
-            this.btnInverteSinal.TabIndex = 36;
-            this.btnInverteSinal.Text = "+/-";
-            this.btnInverteSinal.UseVisualStyleBackColor = false;
-            // 
             // btnResultado
             // 
             this.btnResultado.BackColor = System.Drawing.Color.IndianRed;
@@ -253,10 +237,10 @@
             this.btnResultado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnResultado.ForeColor = System.Drawing.Color.White;
-            this.btnResultado.Location = new System.Drawing.Point(193, 426);
+            this.btnResultado.Location = new System.Drawing.Point(132, 426);
             this.btnResultado.Margin = new System.Windows.Forms.Padding(0);
             this.btnResultado.Name = "btnResultado";
-            this.btnResultado.Size = new System.Drawing.Size(60, 60);
+            this.btnResultado.Size = new System.Drawing.Size(121, 60);
             this.btnResultado.TabIndex = 42;
             this.btnResultado.Text = "=";
             this.btnResultado.UseVisualStyleBackColor = false;
@@ -275,6 +259,7 @@
             this.btnAdicao.TabIndex = 41;
             this.btnAdicao.Text = "+";
             this.btnAdicao.UseVisualStyleBackColor = false;
+            this.btnAdicao.Click += new System.EventHandler(this.botaoSubAdc_Click);
             // 
             // btnSubtracao
             // 
@@ -290,6 +275,7 @@
             this.btnSubtracao.TabIndex = 40;
             this.btnSubtracao.Text = "-";
             this.btnSubtracao.UseVisualStyleBackColor = false;
+            this.btnSubtracao.Click += new System.EventHandler(this.botaoSubAdc_Click);
             // 
             // btnMultiplicacao
             // 
@@ -305,6 +291,7 @@
             this.btnMultiplicacao.TabIndex = 39;
             this.btnMultiplicacao.Text = "*";
             this.btnMultiplicacao.UseVisualStyleBackColor = false;
+            this.btnMultiplicacao.Click += new System.EventHandler(this.botaoDivMult_Click);
             // 
             // btnDivisao
             // 
@@ -320,21 +307,23 @@
             this.btnDivisao.TabIndex = 46;
             this.btnDivisao.Text = "/";
             this.btnDivisao.UseVisualStyleBackColor = false;
+            this.btnDivisao.Click += new System.EventHandler(this.botaoDivMult_Click);
             // 
             // btnRaiz
             // 
             this.btnRaiz.BackColor = System.Drawing.Color.MistyRose;
             this.btnRaiz.FlatAppearance.BorderSize = 0;
             this.btnRaiz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRaiz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnRaiz.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnRaiz.ForeColor = System.Drawing.Color.DarkRed;
             this.btnRaiz.Location = new System.Drawing.Point(132, 182);
             this.btnRaiz.Margin = new System.Windows.Forms.Padding(0);
             this.btnRaiz.Name = "btnRaiz";
             this.btnRaiz.Size = new System.Drawing.Size(60, 60);
             this.btnRaiz.TabIndex = 45;
-            this.btnRaiz.Text = "raiz";
+            this.btnRaiz.Text = "√";
             this.btnRaiz.UseVisualStyleBackColor = false;
+            this.btnRaiz.Click += new System.EventHandler(this.botaoRaiz_Click);
             // 
             // btnPotenciacao
             // 
@@ -350,6 +339,7 @@
             this.btnPotenciacao.TabIndex = 44;
             this.btnPotenciacao.Text = "x^y";
             this.btnPotenciacao.UseVisualStyleBackColor = false;
+            this.btnPotenciacao.Click += new System.EventHandler(this.botaoPotencia_Click);
             // 
             // btnQuadrado
             // 
@@ -365,6 +355,7 @@
             this.btnQuadrado.TabIndex = 43;
             this.btnQuadrado.Text = "x²";
             this.btnQuadrado.UseVisualStyleBackColor = false;
+            this.btnQuadrado.Click += new System.EventHandler(this.botaoPotencia_Click);
             // 
             // btnApagar
             // 
@@ -424,6 +415,7 @@
             this.lblResultado.TabIndex = 50;
             this.lblResultado.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblResultado.SizeChanged += new System.EventHandler(this.lblResultado_SizeChanged);
+            this.lblResultado.TextChanged += new System.EventHandler(this.lblResultado_TextChanged);
             // 
             // lblEquacao
             // 
@@ -457,7 +449,6 @@
             this.Controls.Add(this.btnMultiplicacao);
             this.Controls.Add(this.btnVirgula);
             this.Controls.Add(this.btn0);
-            this.Controls.Add(this.btnInverteSinal);
             this.Controls.Add(this.btn9);
             this.Controls.Add(this.btn8);
             this.Controls.Add(this.btn7);
@@ -468,8 +459,10 @@
             this.Controls.Add(this.btn2);
             this.Controls.Add(this.btn1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "FormCalculadora";
             this.Text = "Calculadora";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormCalculadora_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,7 +481,6 @@
         private System.Windows.Forms.Button btn4;
         private System.Windows.Forms.Button btnVirgula;
         private System.Windows.Forms.Button btn0;
-        private System.Windows.Forms.Button btnInverteSinal;
         private System.Windows.Forms.Button btnResultado;
         private System.Windows.Forms.Button btnAdicao;
         private System.Windows.Forms.Button btnSubtracao;
