@@ -425,9 +425,8 @@
             this.lblEquacao.ForeColor = System.Drawing.Color.DarkRed;
             this.lblEquacao.Location = new System.Drawing.Point(13, 59);
             this.lblEquacao.Name = "lblEquacao";
-            this.lblEquacao.Size = new System.Drawing.Size(118, 31);
+            this.lblEquacao.Size = new System.Drawing.Size(0, 31);
             this.lblEquacao.TabIndex = 51;
-            this.lblEquacao.Text = "equacao";
             // 
             // FormCalculadora
             // 

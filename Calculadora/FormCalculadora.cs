@@ -55,7 +55,7 @@ namespace Calculadora
                     botaoVirgula();
                     break;
                 case "=":
-                    CalcularResultado();
+                    botaoResultado();
                     break;
             }
         }
@@ -82,15 +82,21 @@ namespace Calculadora
                     botaoVirgula();
                     break;
                 case "\n":
-                    CalcularResultado();
+                    botaoResultado();
                     break;
             }
         }
 
         //funcionalidades dos botões
-        private void CalcularResultado()
+        private void botaoResultado()
         {
+            string equacao = lblResultado.Text;
 
+            CalculadoraMath calculo = new CalculadoraMath(equacao);
+            string resultado = calculo.GetResultadoEquacao();
+
+            lblEquacao.Text = lblResultado.Text;
+            lblResultado.Text = resultado;
         }
 
         private void botaoNumerico(string numero)
@@ -177,6 +183,7 @@ namespace Calculadora
             else
                 Equacao = Equacao.Substring(0, UltimoIndice);
 
+            lblEquacao.Text = "";
             lblResultado.Text = Equacao;
         }
 
@@ -205,7 +212,7 @@ namespace Calculadora
         private void AtualizarAtributos()
         {
             Equacao = lblResultado.Text;
-            UltimoIndice = lblResultado.Text.Length - 1;
+            UltimoIndice = (lblResultado.Text.Length > 0) ? lblResultado.Text.Length - 1 : 0;
             if (Equacao != "")
                 UltimoCaracter = lblResultado.Text[lblResultado.Text.Length - 1];
         }
