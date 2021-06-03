@@ -50,8 +50,14 @@
             this.btnApagar = new System.Windows.Forms.Button();
             this.btnApagarTudo = new System.Windows.Forms.Button();
             this.btnHistorico = new System.Windows.Forms.Button();
-            this.lblResultado = new System.Windows.Forms.Label();
             this.lblEquacao = new System.Windows.Forms.Label();
+            this.lblResultado = new System.Windows.Forms.Label();
+            this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
+            this.flowLayoutPanelHistorico = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // btn3
@@ -61,7 +67,7 @@
             this.btn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn3.ForeColor = System.Drawing.Color.DarkRed;
-            this.btn3.Location = new System.Drawing.Point(132, 243);
+            this.btn3.Location = new System.Drawing.Point(126, 238);
             this.btn3.Margin = new System.Windows.Forms.Padding(0);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(60, 60);
@@ -77,7 +83,7 @@
             this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn2.ForeColor = System.Drawing.Color.DarkRed;
-            this.btn2.Location = new System.Drawing.Point(71, 243);
+            this.btn2.Location = new System.Drawing.Point(65, 238);
             this.btn2.Margin = new System.Windows.Forms.Padding(0);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(60, 60);
@@ -93,7 +99,7 @@
             this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn1.ForeColor = System.Drawing.Color.DarkRed;
-            this.btn1.Location = new System.Drawing.Point(10, 243);
+            this.btn1.Location = new System.Drawing.Point(4, 238);
             this.btn1.Margin = new System.Windows.Forms.Padding(0);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(60, 60);
@@ -109,7 +115,7 @@
             this.btn9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn9.ForeColor = System.Drawing.Color.DarkRed;
-            this.btn9.Location = new System.Drawing.Point(132, 365);
+            this.btn9.Location = new System.Drawing.Point(126, 360);
             this.btn9.Margin = new System.Windows.Forms.Padding(0);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(60, 60);
@@ -125,7 +131,7 @@
             this.btn8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn8.ForeColor = System.Drawing.Color.DarkRed;
-            this.btn8.Location = new System.Drawing.Point(71, 365);
+            this.btn8.Location = new System.Drawing.Point(65, 360);
             this.btn8.Margin = new System.Windows.Forms.Padding(0);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(60, 60);
@@ -141,7 +147,7 @@
             this.btn7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn7.ForeColor = System.Drawing.Color.DarkRed;
-            this.btn7.Location = new System.Drawing.Point(10, 365);
+            this.btn7.Location = new System.Drawing.Point(4, 360);
             this.btn7.Margin = new System.Windows.Forms.Padding(0);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(60, 60);
@@ -157,7 +163,7 @@
             this.btn6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn6.ForeColor = System.Drawing.Color.DarkRed;
-            this.btn6.Location = new System.Drawing.Point(132, 304);
+            this.btn6.Location = new System.Drawing.Point(126, 299);
             this.btn6.Margin = new System.Windows.Forms.Padding(0);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(60, 60);
@@ -173,7 +179,7 @@
             this.btn5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn5.ForeColor = System.Drawing.Color.DarkRed;
-            this.btn5.Location = new System.Drawing.Point(71, 304);
+            this.btn5.Location = new System.Drawing.Point(65, 299);
             this.btn5.Margin = new System.Windows.Forms.Padding(0);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(60, 60);
@@ -189,7 +195,7 @@
             this.btn4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn4.ForeColor = System.Drawing.Color.DarkRed;
-            this.btn4.Location = new System.Drawing.Point(10, 304);
+            this.btn4.Location = new System.Drawing.Point(4, 299);
             this.btn4.Margin = new System.Windows.Forms.Padding(0);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(60, 60);
@@ -205,7 +211,7 @@
             this.btnVirgula.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVirgula.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnVirgula.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnVirgula.Location = new System.Drawing.Point(71, 426);
+            this.btnVirgula.Location = new System.Drawing.Point(65, 421);
             this.btnVirgula.Margin = new System.Windows.Forms.Padding(0);
             this.btnVirgula.Name = "btnVirgula";
             this.btnVirgula.Size = new System.Drawing.Size(60, 60);
@@ -221,7 +227,7 @@
             this.btn0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn0.ForeColor = System.Drawing.Color.DarkRed;
-            this.btn0.Location = new System.Drawing.Point(10, 426);
+            this.btn0.Location = new System.Drawing.Point(4, 421);
             this.btn0.Margin = new System.Windows.Forms.Padding(0);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(60, 60);
@@ -237,7 +243,7 @@
             this.btnResultado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnResultado.ForeColor = System.Drawing.Color.White;
-            this.btnResultado.Location = new System.Drawing.Point(132, 426);
+            this.btnResultado.Location = new System.Drawing.Point(126, 421);
             this.btnResultado.Margin = new System.Windows.Forms.Padding(0);
             this.btnResultado.Name = "btnResultado";
             this.btnResultado.Size = new System.Drawing.Size(121, 60);
@@ -253,7 +259,7 @@
             this.btnAdicao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnAdicao.ForeColor = System.Drawing.Color.White;
-            this.btnAdicao.Location = new System.Drawing.Point(193, 365);
+            this.btnAdicao.Location = new System.Drawing.Point(187, 360);
             this.btnAdicao.Margin = new System.Windows.Forms.Padding(0);
             this.btnAdicao.Name = "btnAdicao";
             this.btnAdicao.Size = new System.Drawing.Size(60, 60);
@@ -269,7 +275,7 @@
             this.btnSubtracao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubtracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnSubtracao.ForeColor = System.Drawing.Color.White;
-            this.btnSubtracao.Location = new System.Drawing.Point(193, 304);
+            this.btnSubtracao.Location = new System.Drawing.Point(187, 299);
             this.btnSubtracao.Margin = new System.Windows.Forms.Padding(0);
             this.btnSubtracao.Name = "btnSubtracao";
             this.btnSubtracao.Size = new System.Drawing.Size(60, 60);
@@ -285,7 +291,7 @@
             this.btnMultiplicacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMultiplicacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnMultiplicacao.ForeColor = System.Drawing.Color.White;
-            this.btnMultiplicacao.Location = new System.Drawing.Point(193, 243);
+            this.btnMultiplicacao.Location = new System.Drawing.Point(187, 238);
             this.btnMultiplicacao.Margin = new System.Windows.Forms.Padding(0);
             this.btnMultiplicacao.Name = "btnMultiplicacao";
             this.btnMultiplicacao.Size = new System.Drawing.Size(60, 60);
@@ -301,7 +307,7 @@
             this.btnDivisao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDivisao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnDivisao.ForeColor = System.Drawing.Color.White;
-            this.btnDivisao.Location = new System.Drawing.Point(193, 182);
+            this.btnDivisao.Location = new System.Drawing.Point(187, 177);
             this.btnDivisao.Margin = new System.Windows.Forms.Padding(0);
             this.btnDivisao.Name = "btnDivisao";
             this.btnDivisao.Size = new System.Drawing.Size(60, 60);
@@ -317,7 +323,7 @@
             this.btnRaiz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRaiz.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnRaiz.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnRaiz.Location = new System.Drawing.Point(132, 182);
+            this.btnRaiz.Location = new System.Drawing.Point(126, 177);
             this.btnRaiz.Margin = new System.Windows.Forms.Padding(0);
             this.btnRaiz.Name = "btnRaiz";
             this.btnRaiz.Size = new System.Drawing.Size(60, 60);
@@ -333,7 +339,7 @@
             this.btnPotenciacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPotenciacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnPotenciacao.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnPotenciacao.Location = new System.Drawing.Point(71, 182);
+            this.btnPotenciacao.Location = new System.Drawing.Point(65, 177);
             this.btnPotenciacao.Margin = new System.Windows.Forms.Padding(0);
             this.btnPotenciacao.Name = "btnPotenciacao";
             this.btnPotenciacao.Size = new System.Drawing.Size(60, 60);
@@ -349,7 +355,7 @@
             this.btnQuadrado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuadrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnQuadrado.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnQuadrado.Location = new System.Drawing.Point(10, 182);
+            this.btnQuadrado.Location = new System.Drawing.Point(4, 177);
             this.btnQuadrado.Margin = new System.Windows.Forms.Padding(0);
             this.btnQuadrado.Name = "btnQuadrado";
             this.btnQuadrado.Size = new System.Drawing.Size(60, 60);
@@ -365,7 +371,7 @@
             this.btnApagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnApagar.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnApagar.Location = new System.Drawing.Point(131, 151);
+            this.btnApagar.Location = new System.Drawing.Point(125, 146);
             this.btnApagar.Margin = new System.Windows.Forms.Padding(0);
             this.btnApagar.Name = "btnApagar";
             this.btnApagar.Size = new System.Drawing.Size(122, 30);
@@ -381,7 +387,7 @@
             this.btnApagarTudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApagarTudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnApagarTudo.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnApagarTudo.Location = new System.Drawing.Point(9, 151);
+            this.btnApagarTudo.Location = new System.Drawing.Point(3, 146);
             this.btnApagarTudo.Margin = new System.Windows.Forms.Padding(0);
             this.btnApagarTudo.Name = "btnApagarTudo";
             this.btnApagarTudo.Size = new System.Drawing.Size(122, 30);
@@ -396,13 +402,24 @@
             this.btnHistorico.FlatAppearance.BorderSize = 0;
             this.btnHistorico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHistorico.ForeColor = System.Drawing.Color.White;
-            this.btnHistorico.Location = new System.Drawing.Point(193, 9);
+            this.btnHistorico.Location = new System.Drawing.Point(3, 9);
             this.btnHistorico.Margin = new System.Windows.Forms.Padding(0);
             this.btnHistorico.Name = "btnHistorico";
             this.btnHistorico.Size = new System.Drawing.Size(60, 24);
             this.btnHistorico.TabIndex = 49;
             this.btnHistorico.Text = "hist";
             this.btnHistorico.UseVisualStyleBackColor = false;
+            this.btnHistorico.Click += new System.EventHandler(this.btnHistorico_Click);
+            // 
+            // lblEquacao
+            // 
+            this.lblEquacao.AutoSize = true;
+            this.lblEquacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblEquacao.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblEquacao.Location = new System.Drawing.Point(9, 59);
+            this.lblEquacao.Name = "lblEquacao";
+            this.lblEquacao.Size = new System.Drawing.Size(0, 31);
+            this.lblEquacao.TabIndex = 51;
             // 
             // lblResultado
             // 
@@ -410,7 +427,7 @@
             this.lblResultado.AutoSize = true;
             this.lblResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
             this.lblResultado.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblResultado.Location = new System.Drawing.Point(15, 90);
+            this.lblResultado.Location = new System.Drawing.Point(6, 90);
             this.lblResultado.Name = "lblResultado";
             this.lblResultado.Size = new System.Drawing.Size(0, 39);
             this.lblResultado.TabIndex = 50;
@@ -418,22 +435,61 @@
             this.lblResultado.SizeChanged += new System.EventHandler(this.lblResultado_SizeChanged);
             this.lblResultado.TextChanged += new System.EventHandler(this.lblResultado_TextChanged);
             // 
-            // lblEquacao
+            // BottomToolStripPanel
             // 
-            this.lblEquacao.AutoSize = true;
-            this.lblEquacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.lblEquacao.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblEquacao.Location = new System.Drawing.Point(13, 59);
-            this.lblEquacao.Name = "lblEquacao";
-            this.lblEquacao.Size = new System.Drawing.Size(0, 31);
-            this.lblEquacao.TabIndex = 51;
+            this.BottomToolStripPanel.Location = new System.Drawing.Point(0, 0);
+            this.BottomToolStripPanel.Name = "BottomToolStripPanel";
+            this.BottomToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.BottomToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.BottomToolStripPanel.Size = new System.Drawing.Size(0, 0);
+            // 
+            // TopToolStripPanel
+            // 
+            this.TopToolStripPanel.Location = new System.Drawing.Point(0, 0);
+            this.TopToolStripPanel.Name = "TopToolStripPanel";
+            this.TopToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.TopToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.TopToolStripPanel.Size = new System.Drawing.Size(0, 0);
+            // 
+            // RightToolStripPanel
+            // 
+            this.RightToolStripPanel.Location = new System.Drawing.Point(0, 0);
+            this.RightToolStripPanel.Name = "RightToolStripPanel";
+            this.RightToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.RightToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.RightToolStripPanel.Size = new System.Drawing.Size(0, 0);
+            // 
+            // LeftToolStripPanel
+            // 
+            this.LeftToolStripPanel.Location = new System.Drawing.Point(0, 0);
+            this.LeftToolStripPanel.Name = "LeftToolStripPanel";
+            this.LeftToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.LeftToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.LeftToolStripPanel.Size = new System.Drawing.Size(0, 0);
+            // 
+            // ContentPanel
+            // 
+            this.ContentPanel.Size = new System.Drawing.Size(330, 430);
+            // 
+            // flowLayoutPanelHistorico
+            // 
+            this.flowLayoutPanelHistorico.AutoScroll = true;
+            this.flowLayoutPanelHistorico.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanelHistorico.BackColor = System.Drawing.Color.Snow;
+            this.flowLayoutPanelHistorico.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanelHistorico.Location = new System.Drawing.Point(255, -5);
+            this.flowLayoutPanelHistorico.Name = "flowLayoutPanelHistorico";
+            this.flowLayoutPanelHistorico.Size = new System.Drawing.Size(174, 501);
+            this.flowLayoutPanelHistorico.TabIndex = 53;
+            this.flowLayoutPanelHistorico.Visible = false;
             // 
             // FormCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(264, 497);
+            this.ClientSize = new System.Drawing.Size(251, 486);
+            this.Controls.Add(this.flowLayoutPanelHistorico);
             this.Controls.Add(this.lblEquacao);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.btnHistorico);
@@ -458,7 +514,7 @@
             this.Controls.Add(this.btn3);
             this.Controls.Add(this.btn2);
             this.Controls.Add(this.btn1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.Name = "FormCalculadora";
             this.Text = "Calculadora";
@@ -492,8 +548,14 @@
         private System.Windows.Forms.Button btnApagar;
         private System.Windows.Forms.Button btnApagarTudo;
         private System.Windows.Forms.Button btnHistorico;
-        private System.Windows.Forms.Label lblResultado;
         private System.Windows.Forms.Label lblEquacao;
+        private System.Windows.Forms.Label lblResultado;
+        private System.Windows.Forms.ToolStripPanel BottomToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel TopToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel RightToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel LeftToolStripPanel;
+        private System.Windows.Forms.ToolStripContentPanel ContentPanel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelHistorico;
     }
 }
 

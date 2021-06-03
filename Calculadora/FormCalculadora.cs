@@ -20,154 +20,171 @@ namespace Calculadora
         {
             InitializeComponent();
             AtualizarAtributos();
+
+            flowLayoutPanelHistorico.Location = new Point(80, -2);
         }
 
         //Métodos de captura dos eventos pressionar os botões
         private void botaoVirtual_Click(object sender, EventArgs e)
         {
             Button botao = (Button)sender;
-            string tecla = botao.Text;
+            char tecla = botao.Text[0];
             switch(tecla)
             {
-                case "1": case "2": case "3": case "4": case "5":
-                case "6": case "7": case "8": case "9": case "0":
+                case '1': case '2': case '3': case '4': case '5':
+                case '6': case '7': case '8': case '9': case '0':
                     botaoNumerico(tecla);
                     break;
-                case "+": case "-":
+                case '+': case '-':
                     botaoSubAdc(tecla);
                     break;
-                case "*": case "/":
+                case '*': case '/':
                     botaoDivMult(tecla);
                     break;
-                case "x²": case "x^y":
-                    botaoPotencia(tecla);
-                    break;
-                case "C":
+                case 'C':
                     botaoApagar(true);
                     break;
-                case "⌫":
+                case '⌫':
                     botaoApagar();
                     break;
-                case "√":
+                case '√':
                     botaoRaiz();
                     break;
-                case ",":
+                case ',':
                     botaoVirgula();
                     break;
-                case "=":
+                case '=':
+                    botaoResultado();
+                    break;
+            }
+
+            if(botao.Text == "x²" || botao.Text == "x^y")
+                botaoPotencia(botao.Text);
+        }
+
+        private void botaoTeclado_Click(object sender, KeyPressEventArgs e)
+        {
+           char tecla = e.KeyChar;
+           switch (tecla)
+            {
+                case '1': case '2': case '3': case '4': case '5':
+                case '6': case '7': case '8': case '9': case '0':
+                    botaoNumerico(tecla);
+                    break;
+                case '+': case '-':
+                    botaoSubAdc(tecla);
+                    break;
+                case '*': case '/':
+                    botaoDivMult(tecla);
+                    break;
+                case '\b':
+                    botaoApagar();
+                    break;
+                case ',':
+                    botaoVirgula();
+                    break;
+                case '\n':
                     botaoResultado();
                     break;
             }
         }
 
-        private void botaoTeclado_Click(object sender, KeyPressEventArgs e)
+        private void btnHistorico_Click(object sender, EventArgs e)
         {
-           string tecla = $"{e.KeyChar}";
-           switch (tecla)
-            {
-                case "1": case "2": case "3": case "4": case "5":
-                case "6": case "7": case "8": case "9": case "0":
-                    botaoNumerico(tecla);
-                    break;
-                case "+": case "-":
-                    botaoSubAdc(tecla);
-                    break;
-                case "*": case "/":
-                    botaoDivMult(tecla);
-                    break;
-                case "\b":
-                    botaoApagar();
-                    break;
-                case ",":
-                    botaoVirgula();
-                    break;
-                case "\n":
-                    botaoResultado();
-                    break;
-            }
+            bool visivel = flowLayoutPanelHistorico.Visible;
+
+            if (visivel)
+                flowLayoutPanelHistorico.Visible = false;
+            else
+                flowLayoutPanelHistorico.Visible = true;
         }
 
         //funcionalidades dos botões
         private void botaoResultado()
         {
-            string equacao = lblResultado.Text;
+            if (String.IsNullOrEmpty(Equacao) || Equacao == "Erro" ||
+                (Equacao.Length == 1 && CalculadoraMath.OPERACOES.Contains(Equacao[0]))) 
+                return;
 
-            CalculadoraMath calculo = new CalculadoraMath(equacao);
-            string resultado = calculo.GetResultadoEquacao();
+            try
+            {
+                CalculadoraMath calculo = new CalculadoraMath(Equacao);
+                string resultado = calculo.GetResultadoEquacao();
 
-            lblEquacao.Text = lblResultado.Text;
-            lblResultado.Text = resultado;
+                lblEquacao.Text = lblResultado.Text;
+                lblResultado.Text = resultado;
+
+                AdicionarItemNoHistorico(lblEquacao.Text, lblResultado.Text);
+            }
+            catch
+            {
+                lblEquacao.Text = "";
+                lblResultado.Text = "Erro";
+            }
         }
-
-        private void botaoNumerico(string numero)
+        
+        private void botaoNumerico(char numero)
         {
             lblResultado.Text += numero;
         }
 
-        private void botaoDivMult(string operador)
+        private void botaoDivMult(char operador)
         {
-            if (Equacao == "" || UltimoCaracter == '+' || UltimoCaracter == '-' ||
-               UltimoCaracter == ',' || UltimoCaracter == '^' || UltimoCaracter == '√')
-                return;
-
-            if (UltimoCaracter == '/' || UltimoCaracter == '*')
+            if (!Char.IsNumber(UltimoCaracter))
+            {
+                if (Equacao == "" || UltimoCaracter == operador || (UltimoCaracter != '*' && UltimoCaracter != '/'))
+                    return;
+                
                 Equacao = Equacao.Substring(0, UltimoIndice);
-
+            }
             Equacao += operador;
             lblResultado.Text = Equacao;
         }
 
-        private void botaoSubAdc(string operador)
+        private void botaoSubAdc(char operador)
         {
-            if (UltimoCaracter == ',' || UltimoCaracter == '√')
-                return;
-
-            if (UltimoCaracter == '-' || UltimoCaracter == '+')
-                Equacao = Equacao.Substring(0, UltimoIndice);
-
+            if (!Char.IsNumber(UltimoCaracter))
+            {
+                if (UltimoCaracter == operador || UltimoCaracter == ',' || UltimoCaracter == '√')
+                    return;
+                else if (UltimoCaracter == '-' || UltimoCaracter == '+')
+                    Equacao = Equacao.Substring(0, UltimoIndice);
+            }
+            
             Equacao += operador;
             lblResultado.Text = Equacao;
         }
 
         private void botaoPotencia(string operador)
         {
-            if (UltimoCaracter == ',' || Equacao == "" ||
-               UltimoCaracter == '+' || UltimoCaracter == '-' ||
-                   UltimoCaracter == '*' || UltimoCaracter == '/' || UltimoCaracter == '√')
-                return;
-
-            if(UltimoIndice != 0)
+            if (!Char.IsNumber(UltimoCaracter))
             {
-                string doisUltimosCaracteres = $"{Equacao[UltimoIndice - 1]}{Equacao[UltimoIndice]}";
                 if (UltimoCaracter == '^')
                     Equacao = Equacao.Substring(0, UltimoIndice);
-                else if (doisUltimosCaracteres == "^2")
-                    Equacao = Equacao.Substring(0, UltimoIndice - 1);
+
+                return;
             }
-           
+
             if (operador == "x²")
                 Equacao += "^2";
             else
-                Equacao += "^";
+                Equacao += '^';
 
             lblResultado.Text = Equacao;
         }
 
         private void botaoRaiz()
         {
-            if (UltimoCaracter == ',')
+            if (UltimoCaracter == ',' || UltimoCaracter == '√')
                 return;
-
-            if (UltimoCaracter == '√')
-                Equacao = Equacao.Substring(0, UltimoIndice);
 
             lblResultado.Text += "√";
         }
 
+        //to-do: criar restrição para virgula não poder aparecer duas vezes no mesmo numero  
         private void botaoVirgula()
         {
-            if (Equacao.Contains(",") || Equacao == "" || UltimoCaracter == '+' ||
-                UltimoCaracter == '-' || UltimoCaracter == '*' || UltimoCaracter == '/')
+            if (!Char.IsNumber(UltimoCaracter))
                 return;
 
             lblResultado.Text += ',';
@@ -187,7 +204,7 @@ namespace Calculadora
             lblResultado.Text = Equacao;
         }
 
-
+      
         private void lblResultado_SizeChanged(object sender, EventArgs e)
         {
             if (lblResultado.Size.Width >= 250 && lblResultado.Font.Size >= 15)
@@ -215,6 +232,30 @@ namespace Calculadora
             UltimoIndice = (lblResultado.Text.Length > 0) ? lblResultado.Text.Length - 1 : 0;
             if (Equacao != "")
                 UltimoCaracter = lblResultado.Text[lblResultado.Text.Length - 1];
+        }
+
+        private void AdicionarItemNoHistorico(string eqc, string res)
+        {
+            Label lblEqc = new Label()
+            {
+                Text = eqc,
+                ForeColor = Color.DarkRed,
+                Font = new Font(Font.FontFamily.Name, 10)
+            };
+
+            Label lblRes = new Label()
+            {
+                Text = res,
+                ForeColor = Color.DarkRed,
+                Font = new Font(Font.FontFamily.Name, 15)
+             };
+
+            FlowLayoutPanel panel = new FlowLayoutPanel();
+            panel.Controls.Add(lblEqc);
+            panel.Controls.Add(lblRes);
+            panel.Size = new Size(100, 50);
+
+            flowLayoutPanelHistorico.Controls.Add(panel);
         }
     }
 }
