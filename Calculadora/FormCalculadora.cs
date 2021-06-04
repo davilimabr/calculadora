@@ -100,29 +100,6 @@ namespace Calculadora
         }
 
         //funcionalidades dos botões
-        private void botaoResultado()
-        {
-            if (String.IsNullOrEmpty(Equacao) || Equacao == "Erro" ||
-                (Equacao.Length == 1 && CalculadoraMath.OPERACOES.Contains(Equacao[0]))) 
-                return;
-
-            try
-            {
-                CalculadoraMath calculo = new CalculadoraMath(Equacao);
-                string resultado = calculo.GetResultadoEquacao();
-
-                lblEquacao.Text = lblResultado.Text;
-                lblResultado.Text = resultado;
-
-                AdicionarItemNoHistorico(lblEquacao.Text, lblResultado.Text);
-            }
-            catch
-            {
-                lblEquacao.Text = "";
-                lblResultado.Text = "Erro";
-            }
-        }
-        
         private void botaoNumerico(char numero)
         {
             lblResultado.Text += numero;
@@ -181,13 +158,22 @@ namespace Calculadora
             lblResultado.Text += "√";
         }
 
-        //to-do: criar restrição para virgula não poder aparecer duas vezes no mesmo numero  
         private void botaoVirgula()
         {
             if (!Char.IsNumber(UltimoCaracter))
                 return;
 
-            lblResultado.Text += ',';
+            string numero = "";
+            for (int i = Equacao.Length - 1; i >= 0; i--) 
+            {
+                if (CalculadoraMath.OPERACOES.Contains(Equacao[i]))
+                    break;
+
+                numero += Equacao[i];
+            }
+
+            if(!numero.Contains(','))
+                lblResultado.Text += ',';
         }
 
         private void botaoApagar(bool apagarTudo = false)
@@ -204,7 +190,45 @@ namespace Calculadora
             lblResultado.Text = Equacao;
         }
 
-      
+        private void botaoResultado()
+        {
+            if (!EquacaoEhValidaParaCalculo())
+                return;
+
+            try
+            {
+                CalculadoraMath calculo = new CalculadoraMath(Equacao);
+                calculo.CalcularEquacao();
+
+                lblEquacao.Text = lblResultado.Text;
+                lblResultado.Text = calculo.Resultado;
+
+                AdicionarItemNoHistorico(lblEquacao.Text, lblResultado.Text);
+            }
+            catch
+            {
+                lblEquacao.Text = "";
+                lblResultado.Text = "Erro";
+            }
+        }
+
+        private bool EquacaoEhValidaParaCalculo()
+        {
+            bool temOperador = false;
+            foreach (char c in Equacao)
+            {
+                if (CalculadoraMath.OPERACOES.Contains(c))
+                    temOperador = true;
+            }
+
+            bool restricao = !String.IsNullOrEmpty(Equacao) &&
+                             Equacao != "Erro" &&
+                             temOperador &&
+                             !(Equacao.Length == 1 && CalculadoraMath.OPERACOES.Contains(Equacao[0]));
+
+            return restricao;
+        }
+
         private void lblResultado_SizeChanged(object sender, EventArgs e)
         {
             if (lblResultado.Size.Width >= 250 && lblResultado.Font.Size >= 15)
@@ -250,9 +274,19 @@ namespace Calculadora
                 Font = new Font(Font.FontFamily.Name, 15)
              };
 
+            Label lblLine = new Label()
+            {
+                Text = "",
+                BorderStyle = BorderStyle.FixedSingle,
+                AutoSize = false,
+                Height = 1
+            };
+
             FlowLayoutPanel panel = new FlowLayoutPanel();
             panel.Controls.Add(lblEqc);
             panel.Controls.Add(lblRes);
+            panel.Controls.Add(lblLine);
+
             panel.Size = new Size(100, 50);
 
             flowLayoutPanelHistorico.Controls.Add(panel);
