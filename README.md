@@ -1,5 +1,6 @@
+<h1 align="center">Calculadora</h1>
 <h1 align="center">
-    Calculadora
+    
     <img src="apresentacao.gif" style="display: inline; text-align: center;">
 </h1>
 
